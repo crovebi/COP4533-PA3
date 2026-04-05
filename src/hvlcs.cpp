@@ -3,10 +3,54 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
-#include <map>
+#include <unordered_map>
 #include <utility>
-std::pair<int, std::string> hvlcs(const std::map<std::string, int>& alphabet, const std::string stringA, const std::string stringB){
+#include <bits/stdc++.h>
+std::pair<int, std::string> hvlcs(std::unordered_map<char, int>& alphabet, const std::string stringA, const std::string stringB){
+    int n = stringA.size();
+    int m = stringB.size();
+    std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
 
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++){
+            if(stringA[i-1] == stringB[j-1]){
+                int value = 0;
+                if(alphabet.count(stringA[i-1])){
+                    value = alphabet[stringA[i-1]];
+                }
+                dp[i][j] = std::max({dp[i-1][j-1] + value, dp[i-1][j], dp[i][j-1]});
+            } else {
+                dp[i][j] = std::max(dp[i-1][j], dp[i][j-1]);
+            }
+        }
+    }
+
+    std::string output;
+    int i = n;
+    int j = m;
+    while(i > 0 && j > 0){
+        if(stringA[i-1] == stringB[j-1]){
+            int value = 0;
+            if(alphabet.count(stringA[i-1])){
+                value = alphabet[stringA[i-1]];
+            }
+            if(dp[i][j] == dp[i-1][j-1] + value && dp[i][j] > dp[i-1][j] && dp[i][j] > dp[i][j-1]) {
+                output += stringA[i-1];
+                i--; 
+                j--;
+            } else if (dp[i-1][j] >= dp[i][j-1]){
+                i--;
+            } else{
+                j--;
+            }
+        } else if(dp[i-1][j] >= dp[i][j-1]){
+            i--;
+        } else{
+            j--;
+        }
+    }
+    std::reverse(output.begin(), output.end());
+return std::make_pair(dp[n][m], output);
 }
 std::vector<std::string> split(const std::string& str, char delimiter) {
     std::vector<std::string> tokens;
@@ -30,11 +74,11 @@ int main(){
     std::string line;
     std::getline(infile, line);
     int alphabetSize = std::stoi(line);
-    std::map<std::string, int> alphabet;
+    std::unordered_map<char, int> alphabet;
     for(int i = 0; i < alphabetSize; i++){
         std::getline(infile, line);
         std::vector<std::string> splitLine = split(line, ' ');
-        alphabet.insert({splitLine[0], std::stoi(splitLine[1])});
+        alphabet[splitLine[0][0]] = std::stoi(splitLine[1]);
     }
     std::string stringA;
     std::string stringB;
