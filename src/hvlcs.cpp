@@ -89,9 +89,14 @@ int main(){
     stringB = line;
     infile.close();
 
+    std::pair<int, std::string> output = hvlcs(alphabet, stringA, stringB);
+    
+    //print output to console: max value and one optimal subsequence
+    std::cout << output.first << std::endl; //max value
+    std::cout << output.second << std::endl; //one optimal subsequence
+
     // -------- run time measurement --------
     auto start = std::chrono::high_resolution_clock::now();
-    std::pair<int, std::string> output = hvlcs(alphabet, stringA, stringB);
     auto end = std::chrono::high_resolution_clock::now();
     double time_ms = std::chrono::duration<double, std::milli>(end - start).count();
     std::cout << "HVLCS runtime: " << time_ms << " ms" << std::endl;
