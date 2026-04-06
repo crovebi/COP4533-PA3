@@ -97,7 +97,7 @@ int main(){
 
     // -------- run time measurement --------
     auto start = std::chrono::high_resolution_clock::now();
-    auto output = hvlcs(alphabet, stringA, stringB);
+    output = hvlcs(alphabet, stringA, stringB);
     auto end = std::chrono::high_resolution_clock::now();
     double time_ms = std::chrono::duration<double, std::milli>(end - start).count();
     std::cout << "HVLCS runtime: " << time_ms << " ms" << std::endl;
