@@ -28,9 +28,10 @@ Explanation
 Pseudocode
 
 HVLCS(string A, string B, characterVal)
+
     n = length(A)
     m = length(B)
-
+    
     create table of max values (implemented as vector in main code)
     dp = array of size (n+1) x (m+1)
 
