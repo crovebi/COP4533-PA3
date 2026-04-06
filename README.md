@@ -27,7 +27,7 @@ Explanation
 # Question 3: Big-Oh
 Pseudocode
 
-HVLCS(string A, string B, chracterVal)
+- HVLCS(string A, string B, characterVal):
     n = length(A)
     m = length(B)
 
@@ -45,4 +45,4 @@ HVLCS(string A, string B, chracterVal)
     return dp[n][m]
 
 Runtime
-- The algorithm creates a 2D table (n+1) x (m+1), with each cell storing an integer. There are n x m cells and to fill each one, it takes O(1) time. The total runtime is O(n x m)
+- The algorithm creates a 2D table (n+1) x (m+1), with each cell storing an integer. There are n x m cells and to fill each one, it takes O(1) time. The total runtime is O(n x m).
