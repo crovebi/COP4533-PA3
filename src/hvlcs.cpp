@@ -91,8 +91,8 @@ int main(){
     std::pair<int, std::string> output = hvlcs(alphabet, stringA, stringB);
     std::ofstream outfile("data/example.out");
     if(outfile.is_open()) {
-        std::cout<<output.first<<std::endl;
-        std::cout<<output.second<<std::endl;
+        outfile<<output.first<<std::endl;
+        outfile<<output.second<<std::endl;
         outfile.close();
     }
 }

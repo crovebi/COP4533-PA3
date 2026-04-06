@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
         std::uniform_int_distribution<> rand(min_val, max_val);
         std::uniform_int_distribution<> randChar(0, 25);
         outfile << alphabetSize << std::endl;
-        if(alphabetSize > 26) return;
+        if(alphabetSize > 26) return 0;
         for(int i = 0; i < alphabetSize; i++){
             outfile << char(97+i) << " " << rand(gen) << std::endl;
         }
@@ -38,6 +38,7 @@ int main(int argc, char *argv[]){
             stringB += char(97+randChar(gen));
         }
         outfile << stringA << std::endl;
-        outfile << stringB << std::endl;
+        outfile << stringB;
     }
+    return 0;
 }
