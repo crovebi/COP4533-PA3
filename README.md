@@ -10,16 +10,16 @@ Let strings A and B be given. Let v(c) be the value of character c from the alph
 - dp[i][j] = max value of a common subsequence of the first i characters of A and first j characters of B
 
 Base Cases
-dp[i][0] = 0 for all i >= 0
-dp[0][j] = 0 for all j >= 0
+- dp[i][0] = 0 for all i >= 0
+- dp[0][j] = 0 for all j >= 0
 
 Recurrence
-dp[i][j]= dp[i-1][j-1] + v(A[i-1]) if A[i-1] == B[j-1]
-max(dp[i-1][j], dp[i][j-1]) if A[i-1] != B[j-1]
+- dp[i][j]= dp[i-1][j-1] + v(A[i-1]) if A[i-1] == B[j-1]
+- max(dp[i-1][j], dp[i][j-1]) if A[i-1] != B[j-1]
 
 If the current characters match, include their values and add to the optimal solution for the previous prefixes. If they dont, take the maximum value by going over one character from either string.
 
 Explanation
-This works because with HVCLS, the optimal subsequence of A[0...i-1] and B[0..j-1] depends only on the optimal solutions of smaller prefixes. By always taking the maximum value at each step, dp[i][j] correct computes the maximum total value of any common subsequence.
+- This works because with HVCLS, the optimal subsequence of A[0...i-1] and B[0..j-1] depends only on the optimal solutions of smaller prefixes. By always taking the maximum value at each step, dp[i][j] correct computes the maximum total value of any common subsequence.
 
 # Question 3: Big-Oh
