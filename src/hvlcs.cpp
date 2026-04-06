@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <utility>
 #include <bits/stdc++.h>
+#include <chrono>
 std::pair<int, std::string> hvlcs(std::unordered_map<char, int>& alphabet, const std::string stringA, const std::string stringB){
     int n = stringA.size();
     int m = stringB.size();
@@ -88,7 +89,14 @@ int main(){
     stringB = line;
     infile.close();
 
+    // -------- run time measurement --------
+    auto start = std::chrono::high_resolution_clock::now();
     std::pair<int, std::string> output = hvlcs(alphabet, stringA, stringB);
+    auto end = std::chrono::high_resolution_clock::now();
+    double time_ms = std::chrono::duration<double, std::milli>(end - start).count();
+    std::cout << "HVLCS runtime: " << time_ms << " ms" << std::endl;
+
+    //write output to file
     std::ofstream outfile("data/example.out");
     if(outfile.is_open()) {
         outfile<<output.first<<std::endl;
