@@ -14,6 +14,7 @@ Base Cases
 - dp[0][j] = 0 for all j >= 0
 
 Recurrence
+
 dp[i][j] = 
 - dp[i-1][j-1] + v(A[i-1]), dp[i-1][j], dp[i][j-1] if A[i-1] == B[j-1]
 - max(dp[i-1][j], dp[i][j-1]) if A[i-1] != B[j-1]
@@ -29,7 +30,7 @@ HVLCS(string A, string B, chracterVal)
     n = length(A)
     m = length(B)
 
-    //create table of max values (implemented as vector in main code)
+    create table of max values (implemented as vector in main code)
     dp = array of size (n+1) x (m+1)
 
     for i = 0 to n:
