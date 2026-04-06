@@ -27,7 +27,7 @@ Explanation
 # Question 3: Big-Oh
 Pseudocode
 
-- HVLCS(string A, string B, characterVal):
+HVLCS(string A, string B, characterVal)
     n = length(A)
     m = length(B)
 
