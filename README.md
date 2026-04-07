@@ -2,9 +2,17 @@
 Programming Assignment 3: Highest Value Longest Common Sequence by Sebastian Crovetto (51487318) & Mosimiloluwa Ajani (79157785)
 
 ## Instructions for Completion
+In the COP4533-PA3 folder, run the commands: g++ src/hvlcs.cpp -o hvlcs and g++ tests/randomTestGen.cpp -o randomTestGen which build the executables for the HVLCS algorithm and generating random input sequences for testing, respectively.
+## Running the Program
+Run the algorithm with: ./hvlcs
 
+The generator can be executed with: ./randomTestGen <alphabet size(max of 26)> <string A size> <string B size> <minimum char value> <maximum char value>
+
+It takes these command line inputs and formats them inside of data/example.in
+
+The results are then outputted to once the algorithm is ran: data/example.out
 # Question 1: Empirical Comparison
-
+[Graph](https://imgur.com/a/LjEqzBQ)
 # Question 2: Recurrence Equation
 Let strings A and B be given. Let v(c) be the value of character c from the alphabet.
 - dp[i][j] = max value of a common subsequence of the first i characters of A and first j characters of B

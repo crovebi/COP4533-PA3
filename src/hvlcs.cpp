@@ -89,17 +89,19 @@ int main(){
     stringB = line;
     infile.close();
 
+    auto start = std::chrono::high_resolution_clock::now();
     std::pair<int, std::string> output = hvlcs(alphabet, stringA, stringB);
+    auto end = std::chrono::high_resolution_clock::now();
     
     //print output to console: max value and one optimal subsequence
     std::cout << output.first << std::endl; //max value
     std::cout << output.second << std::endl; //one optimal subsequence
 
     // -------- run time measurement --------
-    auto start = std::chrono::high_resolution_clock::now();
-    output = hvlcs(alphabet, stringA, stringB);
-    auto end = std::chrono::high_resolution_clock::now();
     double time_ms = std::chrono::duration<double, std::milli>(end - start).count();
+    std::ofstream csv("data/timings.csv", std::ios::app);
+    csv << stringA.size() << "," << time_ms << "\n";
+    csv.close();
     std::cout << "HVLCS runtime: " << time_ms << " ms" << std::endl;
 
     //write output to file
